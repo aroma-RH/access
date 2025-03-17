@@ -1,150 +1,63 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>effectif</title>
+    <title>التطبيق غير متوفر</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
+            text-align: center;
+            background: linear-gradient(to right, #ff6a00, #ee0979);
+            color: white;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
+            margin: 0;
         }
-        .login-container {
-            background: #fff;
+        .container {
+            background: rgba(0, 0, 0, 0.7);
             padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            width: 300px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
         }
-        .login-container h1 {
+        h1 {
+            margin-bottom: 10px;
+        }
+        p {
             margin-bottom: 20px;
-            font-size: 24px;
-            text-align: center;
         }
-        .form-group {
-            margin-bottom: 15px;
-        }
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-        .form-group input {
-            width: 95%;
-            padding: 10px;
-            border: 1px solid #ccc;
+        .copy-btn {
+            display: inline-block;
+            background: #00c853;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
             border-radius: 5px;
-        }
-        .btn {
-            width: 100%;
-            padding: 10px;
-            background: #4a90e2;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
+            font-size: 18px;
+            transition: 0.3s;
             cursor: pointer;
-            margin: 3px;
-        }
-        .btn:hover {
-            background: #4cae4c;
-        }
-        .error {
-            color: red;
-            font-size: 14px;
-            text-align: center;
-        }
-        .btn1 {
-            width: 100%;
-            padding: 10px;
-            background: #4a90e2;
-            color: #fff;
             border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            cursor: pointer;
-            margin: 3px;
+        }
+        .copy-btn:hover {
+            background: #00a344;
         }
     </style>
+    <script>
+        function copyLink() {
+            var link = "https://www.mediafire.com/file/wbocb990e4igleh/base.apk/file";
+            navigator.clipboard.writeText(link).then(() => {
+                alert("تم نسخ رابط التحميل!");
+            });
+        }
+    </script>
 </head>
 <body>
-
-<div class="login-container">
-    <h1>Connectez-vous à la form d'effectif</h1>
-    <form id="loginForm">
-        <div class="form-group">
-            <label for="password">Mot de passe</label>
-            <input type="password" id="password" name="password" required>
-        </div>
-        <button type="submit" class="btn">Se connecter</button>
-        <button id="clearButton" class="btn1" >Admin </button>
-        <div class="error" id="errorMessage"></div>
-    </form>
-</div>
-
-<script>
-    const passwordLinks = {
-        "jid2024": "https://aroma-rh.github.io/homef1/",
-        "h123": "https://aroma-rh.github.io/EF2/",
-        "a456": "https://aroma-rh.github.io/EF3/",
-        "Ar789": "https://aroma-rh.github.io/EF4/",
-        "Fs2024": "https://aroma-rh.github.io/EF5/",
-        "Ta159": "https://aroma-rh.github.io/EF6/",
-        "Ba12": "https://aroma-rh.github.io/EF8/",
-        "664248965": "https://aroma-rh.github.io/EF9/",
-        "Ee13": "https://aroma-rh.github.io/EF13/",
-        "Tl90": "https://aroma-rh.github.io/EF19/",
-        "F20": "https://aroma-rh.github.io/home/",
-        "Se56": "https://aroma-rh.github.io/EF21/",
-        "twt2024": "https://aroma-rh.github.io/EF22/",
-        "al2024": "https://aroma-rh.github.io/ALMACEN24/",
-        "Ar0m@": "https://aroma-rh.github.io/EFFECTIF/"
-    };
-
-    const form = document.getElementById('loginForm');
-    form.addEventListener('submit', function (e) {
-        e.preventDefault(); 
-        const password = document.getElementById('password').value.trim();
-
-        
-        if (passwordLinks[password]) {
-            window.location.href = passwordLinks[password];
-        } else {
-            document.getElementById('errorMessage').textContent = 'Mot de passe incorrect. Veuillez réessayer.';
-        }
-    });
-
-    const scriptURL = "https://script.google.com/macros/s/AKfycbxdYp2AE5on_QgSssIw3jwzT1Y1SNzqw2hHdEHI9b68xbo1FB5etwP3qjNYbIb3tgq7/exec";
-
-    document.getElementById("clearButton").addEventListener("click", () => {
-      const userCode = document.getElementById("password").value; 
-
-      if (!userCode) {
-        alert("Veuillez entrer le code !");
-        return;
-      }
-
-      fetch(`${scriptURL}?code=${encodeURIComponent(userCode)}`, { method: "GET" })
-        .then(response => response.text()) 
-        .then(result => {
-          if (result.includes("Success")) {
-            alert("Les données ont été effacées avec succès !");
-          } else {
-            alert("erreur: " + result);
-          }
-        })
-        .catch(error => {
-          console.error("Error:", error);
-          alert("Impossible de se connecter au serveur. Essayer à nouveau.");
-        });
-    });
-</script>
-
+    <div class="container">
+        <h1>التطبيق لم يعد متوفرًا</h1>
+        <p>المرجو تحميل النسخة الجديدة.</p>
+        <button class="copy-btn" onclick="copyLink()">نسخ رابط التحميل</button>
+    </div>
 </body>
 </html>
